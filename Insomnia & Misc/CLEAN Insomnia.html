@@ -1,0 +1,67 @@
+<!--
+Insomnia v1.0
+
+by Ben Paulson
+
+10/20/2011
+-->
+
+<html>
+
+<title>Insomnia</title>
+  <body>
+  
+  	<input type="text" id="url"/>
+	<button type="button" onclick="submitURL()">Submit</button>
+	
+	<p id="info"></p>
+	
+	<div id="player"></div>
+  
+	<b>Statistics</b>
+	
+	<p id="totalt">Total -> 0.00</p>
+  
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'u1zgFlCw8Aw',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+	  var link;
+	  function submitURL() {
+	  	link = document.getElementById("url").value;
+		document.getElementById("info").innerHTML = "<b style=color:#FF0000>[DEBUG]</b> video link -> " + link;
+		player.loadVideoById(link);
+	  }
+    </script>
+  </body>
+</html>

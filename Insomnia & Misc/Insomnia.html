@@ -1,0 +1,76 @@
+<!--
+Insomnia v1.0
+
+by Ben Paulson
+
+10/20/2011
+-->
+
+<html>
+
+<title>Insomnia</title>
+  <body>
+  
+  	<input type="text" id="url"/>
+	<button type="button" onclick="submitURL() ">Submit</button>
+	
+	<p id="info"></p>
+	
+	<div id="player"></div>
+  
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'u1zgFlCw8Aw',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      var done = false;
+	  var time = 0;
+	  function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+		  document.getElementById("totalt").innerHTML = "Total -> " + player.getCurrentTime() + " seconds";
+        }
+		else if (player.getCurrentTime() == player.GetDuration())
+		{
+		player.loadVideoById(link);
+		}
+      }
+	  
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+	  var link;
+	  function submitURL() {
+	  	link = document.getElementById("url").value;
+		document.getElementById("duration").innerHTML = "Current Video Duration -> " + player.getDuration() + " seconds";
+		document.getElementById("info").innerHTML = "<b style=color:#FF0000>[DEBUG]</b> video link -> " + link;
+		player.loadVideoById(link);
+
+	  }
+    </script>
+	
+		<b>Statistics</b>
+	
+		<p id="totalt">Total -> 0 seconds</p>
+		<p id="duration">Current Video Duration - > 0 seconds</p>
+	
+  </body>
+</html>
