@@ -1,0 +1,88 @@
+/* V1.4 Xianith.com CSS
+Created by Benjamin Paulson © 2011 
+Modified on 09/01/2011 */
+
+@font-face {
+    font-family: custm_bit;
+    src: url('visitor2.ttf')
+}
+
+img.title {
+	top: 100px;
+	position: relative;
+}
+
+body {
+	background-color: #000000;
+	margin: 0; 
+	padding: 0
+}
+
+div.image {
+	background-color: #FFFFFF
+}
+
+div.main {
+	position: relative;
+	top: 65px
+}
+
+a {
+	color:#D8D8D8;
+	text-decoration:none
+}
+
+a:hover{
+	color: #CC4646
+}
+
+b {
+	font-size:28px
+}
+
+pre {
+	color:#FFFFFF;
+	font-family:custm_bit;
+	font-size:16px
+}
+
+p {
+	font-size:11px;
+	color:#FFFFFF
+}
+
+div.footer {
+	position: fixed;
+	left: 2px;
+	bottom: 0px;
+	color:#636363;
+	font-family:custm_bit;
+	font-size:16px
+}
+
+/*
+============================
+Other Colums WIP
+============================
+
+div.c2 {
+	position: relative;
+	top: -120px;
+	left: 130px
+}
+
+div.c3 {
+	position: relative;
+	top: -355px;
+	left: 250px
+}
+
+div.c4 {
+	position: relative;
+	top: -465px;
+	left: 370px
+}
+
+============================
+*/
+
